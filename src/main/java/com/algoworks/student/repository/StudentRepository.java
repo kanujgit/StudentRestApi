@@ -9,7 +9,8 @@ import com.algoworks.student.entity.Student;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-
+  
+	
 	List<Student> findByName(String naem);
 
 }
