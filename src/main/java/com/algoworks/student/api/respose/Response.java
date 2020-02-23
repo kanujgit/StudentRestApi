@@ -24,7 +24,7 @@ public class Response<T> {
 	private Integer statusCode;
 
 	@JsonProperty("result")
-	private Result<T> result;
+	private T result;
 
 	private Long timestamp;
 
@@ -34,7 +34,8 @@ public class Response<T> {
 		status=true;
 		statusCode=200;
 		timestamp = System.currentTimeMillis();
-		this.result = new Result<T>(message,(T) result);
+		this.result = rsult;
+		Result<T>data  = new Result<T>(message,result);
  		
 	}
 	
