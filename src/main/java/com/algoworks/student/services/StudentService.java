@@ -1,16 +1,20 @@
 package com.algoworks.student.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.algoworks.student.entity.Student;
 
 @Service
 public interface StudentService {
-	
+
 	public Student saveDetail(Student student);
 
-	public void getAllList();
+	public List<Student> getAllList();
 
-	public void getDetailByName();
-	
+//	public Student getDetailByName(String name);
+
+	public Student getDetailByName(String name);
+
 }

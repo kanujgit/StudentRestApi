@@ -30,14 +30,6 @@ public class Student {
 	@Column(name = "roll_no")
 	private Integer rollNumber;
 
-	public Student(Long id, String registrationNumber, String name, String className, Integer rollNumber) {
-		super();
-		this.id = id;
-		this.registrationNumber = registrationNumber;
-		this.name = name;
-		this.className = className;
-		this.rollNumber = rollNumber;
-	}
 
 	
 }
