@@ -4,6 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
+
+/*{
+status_code:
+status:
+timeStamp:
+result: {
+		message:
+		data:{}/[]
+		count:
+		}
+}*/
 @Data
 public class Response<T> {
 
@@ -12,12 +23,21 @@ public class Response<T> {
 	@JsonProperty("status_code")
 	private Integer statusCode;
 
-	private String message;
-
 	@JsonProperty("result")
-	private T date;
+	private Result<T> result;
 
 	private Long timestamp;
+
+	public Response(T rsult,String message) {
+		super();
+		
+		status=true;
+		statusCode=200;
+		timestamp = System.currentTimeMillis();
+		this.result = new Result<T>(message,(T) result);
+ 		
+	}
+	
 	
 	
 }

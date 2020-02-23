@@ -2,6 +2,7 @@ package com.algoworks.student.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,19 +14,30 @@ import lombok.Data;
 public class Student {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private Long id;
-	
-	@Column(name="reg_number")
+
+	@Column(name = "reg_number")
 	private String registrationNumber;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
 
-	@Column(name="class_name")
+	@Column(name = "class_name")
 	private String className;
-	
-	@Column(name="roll_no")
+
+	@Column(name = "roll_no")
 	private Integer rollNumber;
 
+	public Student(Long id, String registrationNumber, String name, String className, Integer rollNumber) {
+		super();
+		this.id = id;
+		this.registrationNumber = registrationNumber;
+		this.name = name;
+		this.className = className;
+		this.rollNumber = rollNumber;
+	}
+
+	
 }

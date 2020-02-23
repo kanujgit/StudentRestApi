@@ -6,14 +6,18 @@ import lombok.Data;
 
 @Data
 public class Result<T> {
-	
+
 	private String message;
 
-	@JsonProperty("result")
-	private T date;
-	
+	@JsonProperty("data")
+	private T data;
+
 	private Integer count;
-	
-	
+
+	public Result(String message, T data) {
+		super();
+		this.message = message;
+		this.data = data;
+	}
 
 }
