@@ -9,18 +9,15 @@ import com.algoworks.student.entity.Student;
 import com.algoworks.student.services.StudentService;
 
 @RestController
-
 @RequestMapping("/student")
 public class StudentController {
 
 	@Autowired
-	StudentService service ;
-	
+	StudentService service;
+
 	@PostMapping("/")
-	public Student saveDetail(Student student )
-	{
-		service.saveDetail(student);
+	public Student saveDetail(Student student) {
+		return service.saveDetail(student);
 	}
-	
-	
+
 }
