@@ -1,6 +1,7 @@
 package com.algoworks.student.api.respose;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.Data;
 
@@ -16,6 +17,7 @@ result: {
 		}
 }*/
 @Data
+@JsonPropertyOrder({"status_code","status","timestamp","result"})
 public class Response<T> {
 
 	private Boolean status;
@@ -23,9 +25,8 @@ public class Response<T> {
 	@JsonProperty("status_code")
 	private Integer statusCode;
 
-	@JsonProperty("result")
-	private T result;
-
+	private Result<T> result;
+	
 	private Long timestamp;
 
 	public Response(T rsult,String message) {
@@ -34,8 +35,7 @@ public class Response<T> {
 		status=true;
 		statusCode=200;
 		timestamp = System.currentTimeMillis();
-		this.result = rsult;
-		Result<T>data  = new Result<T>(message,result);
+		result = new Result<T>(message,rsult);
  		
 	}
 	
