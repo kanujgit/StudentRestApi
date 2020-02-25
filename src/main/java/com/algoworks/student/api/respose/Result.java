@@ -2,7 +2,8 @@ package com.algoworks.student.api.respose;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.Data;
@@ -13,7 +14,7 @@ public class Result<T> {
 
 	private String message;
 
-	@JsonProperty("data")
+	@JsonInclude(Include.NON_NULL)
 	private T data;
 
 	private Integer count = 0;
@@ -22,7 +23,7 @@ public class Result<T> {
 	public Result(String message, T data) {
 		super();
 		this.message = message;
-		 this.data = data;
+		this.data = data;
 
 		if (data instanceof List) { // raw type
 			count = ((List) data).size();
@@ -39,6 +40,7 @@ public class Result<T> {
 	public Result(String message) {
 		super();
 		this.message = message;
+
 	}
 
 }
