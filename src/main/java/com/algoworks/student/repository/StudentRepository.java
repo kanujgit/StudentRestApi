@@ -11,5 +11,12 @@ import com.algoworks.student.entity.Student;
 public interface StudentRepository extends PagingAndSortingRepository<Student, Integer> {
 
 	List<Student> findByName(String naem);
+//	
+//	Long countByLastname(String lastname);
+//	
+//	List<Student> findByLastname(String lastname);
+//	
+	Student findByRegistrationNumber(String reg);
+
 
 }

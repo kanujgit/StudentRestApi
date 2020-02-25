@@ -2,6 +2,8 @@ package com.algoworks.student.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,31 +14,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.algoworks.student.api.respose.Response;
 import com.algoworks.student.entity.Student;
-import com.algoworks.student.services.StudentService;
+import com.algoworks.student.service.StudentService;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
 
 	@Autowired
 	StudentService service;
 
 	@PostMapping("/")
-	public Response<Student> saveDetail(@RequestBody Student student) {
+	public Response<Student> saveDetail(@Valid @RequestBody Student student) {
 		Student st=  service.saveDetail(student);
-		return new Response<Student>(st,"data save succesfully");
+		return new Response<>(st,"data save succesfully");
 	}
 
 	@GetMapping("/")
 	public Response<List<Student>> getAllList() {
 		List<Student> st=  service.getAllList();
+		if(st.size() == 0) {
+			return new Response<List<Student>>("No records exist");
+		}
 		return new Response<List<Student>>(st,"data fetch succesfully");
 	}
 	
-	@GetMapping("/getDetailByName/{name}")
-	public Response<Student> getdetailByName(@PathVariable String name) {
-		Student st=  service.getDetailByName(name);
-		return new Response<Student>(st,"data fetch succesfully");
+	@GetMapping("/{name}")
+	public Response<List<Student>> getDetailByName(@PathVariable String name) {
+		List<Student> st=  service.getDetailByName(name);
+		return new Response<List<Student>>(st,"data fetch succesfully");
 	}
 	
 }

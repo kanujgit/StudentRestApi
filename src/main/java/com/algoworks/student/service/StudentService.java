@@ -1,4 +1,4 @@
-package com.algoworks.student.services;
+package com.algoworks.student.service;
 
 import java.util.List;
 
@@ -13,8 +13,6 @@ public interface StudentService {
 
 	public List<Student> getAllList();
 
-//	public Student getDetailByName(String name);
-
-	public Student getDetailByName(String name);
+	public List<Student> getDetailByName(String name);
 
 }
