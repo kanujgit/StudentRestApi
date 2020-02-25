@@ -13,7 +13,7 @@ public class EntityNotFoundException extends RuntimeException {
 
 	public EntityNotFoundException(String arg0) {
 		super(arg0);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public EntityNotFoundException(Throwable arg0) {

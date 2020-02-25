@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
@@ -32,6 +33,7 @@ public class Student {
 	private String className;
 
 	@Column(name = "roll_no")
+	@Max(value = 10, message = "Roll no cannot be greater than 10")
 	private Integer rollNumber;
 
 }
