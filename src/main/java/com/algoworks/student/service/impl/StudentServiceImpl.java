@@ -1,4 +1,4 @@
-package com.algoworks.student.serviceimpl;
+package com.algoworks.student.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.algoworks.student.entity.Student;
 import com.algoworks.student.exception.EntityNotFoundException;
+import com.algoworks.student.exception.ResourceNotFoundException;
 import com.algoworks.student.repository.StudentRepository;
 import com.algoworks.student.service.StudentService;
 
@@ -23,7 +24,6 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<Student> getAllList() {
-		// Page<Student> page = repo.findAll(new PageRequest(1, 10));
 		return (List<Student>) studentRepository.findAll();
 	}
 
@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getDetailByName(String name) {
 		List<Student> stream = studentRepository.findByName(name);
 		if(stream.size() == 0) {
-			throw new EntityNotFoundException("No stufent found with name: " + name);
+			throw new ResourceNotFoundException("No student found with name:");
 		}
 		return stream;
 	}

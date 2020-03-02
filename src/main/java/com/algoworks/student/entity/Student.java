@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -21,12 +23,19 @@ public class Student {
 	private Long id;
 
 	@Column(name = "reg_number")
+	@Size(min =2,max=10)
 	@NotEmpty(message = "registration number must be filled")
 	private String registrationNumber;
 
 	@NotEmpty(message = "name must be filled")
 	@Column(name = "name")
 	private String name;
+	
+	
+	@Column(name="email")
+	@NotEmpty(message = "Email must not be empty")
+	@Email(message ="Email must be a valid email address")
+	private String email;
 
 	@NotEmpty(message = "class name must be filled")
 	@Column(name = "class_name")
